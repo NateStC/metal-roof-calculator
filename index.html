@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Metal Roofing Material Calculator</title>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<header>
+    <h1>Metal Roofing Material Calculator</h1>
+</header>
+<body>
+    <section class="panel-div">
+        <div id='panel-type-div'>
+            <!-- <button value='Hardy Rib' onclick='changePanelType(this)'>Hardy Rib</button> -->
+            <!-- <button value='Standing Seam' onclick='changePanelType(this)'>Standing Seam</button> -->
+            <div class='radioFlex'>
+                <div>
+                    <input type='radio' name='panelTypeRadio' value="Hardy Rib" id='hrRb' width="120px" onclick='selectHr()' checked>
+                    <label for='hrRb'>Hardy Rib</label>
+                </div>
+                <div>
+                    <input type='radio' name='panelTypeRadio' value="Standing Seam" id='ssRb' width="120px" onclick='selectSs()'>
+                    <label for='ssRb'>Standing Seam</label>
+                </div>
+            </div>
+            <h3 id='panelPriceLabel'></h3>
+            <span title="100ft x 100ft  or  1,000 square feet">
+                <h4 id='panelSqPriceLabel'></h4>
+            </span>
+        </div>
+        <div class='tabButtonBox'>
+            <button class='panelTabButton tabButton active' onclick="openPanelTab(event, 'addPanels')">Add Panels</button>
+            <button class='panelTabButton tabButton' onclick="openPanelTab(event, 'addPlane')">Add Roof Plane</button>
+        </div>
+        <div class="panelTabContent tabContent" id='addPanels'>
+            <div class = "panel-div-flex">
+                <div>
+                    <input type="number" id="panel-ft" min=2 max=40 step=1 value=14 onclick='selectInputData(this)'>
+                    <label class='numberInputLabel'>ft</label>
+                    <input type="number" id="panel-in" min=0 max=11 step=1 value=0 onclick='selectInputData(this)'>
+                    <label class='numberInputLabel'>in</label>
+                </div>
+                <div>
+                    <label>Quantity: </label>
+                    <input type = "number" id="panel-quant" min="1" max="999" step="1" value =1 onclick='selectInputData(this)'>
+                    <button onclick="addPanelButton()">Add Panels</button>
+                </div>
+            </div>
+            <h3 class="warning" id="panel-warning"></h3>
+        </div>
+        <div class='panelTabContent tabContent' id='addPlane'>
+            <div id='planeFlex'>
+                <div>
+                    <h4>Plane Width</h4>
+                    <input type='number' id='planeWidthFt' min=3 max=200 value=10 onclick='selectInputData(this)'>
+                    <label class='numberInputLabel'>ft</label>
+                    <input type="number" id='planeWidthIn' min=0 max=11 value=0 onclick="selectInput(this)">
+                    <label class='numberInputLabel'>in</label>
+                </div>
+                <div>
+                    <h4>Plane Length</h4>
+                    <input type='number' id='planeLengthFt' min=2 max=40 value=14 onclick='selectInputData(this)'>
+                    <label class='numberInputLabel'>ft</label>
+                    <input type='number' id='planeLengthIn' min=0 max=11 value=0 onclick='selectInputData(this)'>
+                    <label class='numberInputLabel'>in</label>
+                </div>
+            </div>
+            <div class='padTen'>
+                <input type="checkbox" id='twoSides'>
+                <label for='twoSides'>Double</label>
+                <button onclick='addPlane()';>Add Plane</button>
+            </div>
+            <div>
+
+                <!-- todo- add table to view planes -->
+
+            </div>
+        </div>
+        <div class="colorBoxes" id=colorBoxes>
+            <section>
+                <label>Panel Color:</label> 
+                <select id="panelColor" class=colorSelect onchange="handlePanelColorChange(this)"></select>
+            </section>
+            <section>
+                <label>Trim Color:</label>
+                <select id="trimColor" class=colorSelect onchange="handleTrimColorChange(this)"></select>
+            </section>
+        </div>
+    </section>
+    <section id="measurements">
+        <article class="checkBoxes" id="checkBoxes">
+            <div>
+                <span title="Add ridgeventing material or nonvented closures.">
+                    <label for="ventedRidge">Vented Ridge
+                        <input type="checkbox" name="ventedRidge" id="ventedRidge" checked>
+                    </label>
+                </span>
+            </div>
+            <div>
+                <span title="Select if you are installing over existing shingles.">
+                <label for="overShingles">Over Shingles
+                    <input type="checkbox" name="overShingles" id="overShingles" checked>
+                </label>
+                </span>
+            </div>
+            <div>
+                <span id='furringBox' title="1x3 or 2x4 beams placed between the metal and shingles, horizontally across the roof, every 2 feet.">
+                    <label for="furringStrips">Furring Strips
+                        <input type="checkbox" name="furringStrips" id="furringStrips">
+                    </label>
+                </span>
+            </div>
+            <div>
+                <span id='underlayBox' title="Required if installing directly to sheathing or going over shingles without using furring strips">
+                <label for="addUnderlayment">Add Underlay
+                    <input type="checkbox" name="addUnderlayment" id="addUnderlayment">
+                </label>
+                </span>
+            </div>
+        </article>
+        <article class="ft-inputs">
+            <div>
+                <div class="measureName">
+                    <label>Ridge Cap:</label>
+                    <input type="number" id="ridgeFt" class="measures" min="0" max="1000" step="1" value="0" onclick='selectInputData(this)'>
+                    <label>ft</label>
+                </div>
+                <div class="measureName">
+                    <label>Hip Cap:</label>
+                    <input type="number" class="measures" id="hipFt" min="0" max="1000" step="1" value="0" onclick='selectInputData(this)'>
+                    <label>ft</label>
+                </div>
+                <div class="measureName">
+                    <label>Rake Edge:</label>
+                    <input type="number" class="measures" id="rakeFt" min="0" max="1000" step="1" value="0" onclick='selectInputData(this)'>
+                    <label>ft</label>
+                </div>
+            </div>
+            <div>    
+                <div class="measureName">
+                    <label>Drip Edge:</label>
+                    <input type="number" id="dripFt" class="measures" min="0" max="1000" step="1" value="0" onclick='selectInputData(this)'>
+                    <label>ft</label>
+                </div>
+                <div class="measureName">
+                    <label>Valley Pan:</label>
+                    <input type="number" id="valleyFt" class="measures" min="0" max="1000" step="1" value="0" onclick='selectInputData(this)'>
+                    <label>ft</label>
+                </div>
+                <div class="measureName">
+                    <label>Sidewall Flashing:</label>
+                    <input type="number" id="sidewallFt" class="measures" min="0" max="1000" step="1" value="0" onclick='selectInputData(this)'>
+                    <label>ft</label>
+                </div>
+            </div>
+            <div>
+                <div class="measureName">
+                    <label>Endwall Flashing:</label>
+                    <input type="number" id="endwallFt" class="measures" min="0" max="1000" step="1" value="0" onclick='selectInputData(this)'>
+                    <label>ft</label>
+                </div>
+                <div class="measureName">
+                    <label>Inside Transition:</label>
+                    <input type="number" class="measures" id="insideTransFt" min="0" max="1000" step="1" value="0" onclick='selectInputData(this)'>
+                    <label>ft</label>
+                </div>
+                <div class="measureName">
+                    <label>Outside Transition:</label>
+                    <input type="number" class="measures" id="outsideTransFt" min="0" max="1000" step="1" value="0" onclick='selectInputData(this)'>
+                    <label>ft</label>
+                </div>
+            </div>
+        </article>
+
+        <article class="extrasBox">
+            <div class='tabButtonBox'>    
+                <button class='extrasTabButton tabButton' onclick="openExtrasTab(event, 'boots')">Pipe Boots</button>
+                <button class="extrasTabButton tabButton" onclick="openExtrasTab(event, 'ice')">Ice & Water Shield</button>
+                <button class='extrasTabButton tabButton' onclick="openExtrasTab(event, 'soffit')">Fascia & Soffit</button>
+            </div>
+            <div id='boots' class='tabContent extrasTabContent'>
+                <div class="bootDiv" id='bootSizeDiv'>
+                    <label>Size:</label>
+                    <select id='bootSizeSelector'>
+                        <option value='3'>#3 Boot (0.25in - 5in)</option>
+                        <option value='4'>#4 Boot (3in - 6.5in)</option>
+                        <option value='5'>#5 Boot (4.25in - 7.75in)</option>
+                        <option value='6'>#6 Boot (5in - 9in)</option>
+                        <option value='7'>#7 Boot (6in - 11in)</option>
+                        <option value='8'>#8 Boot (7in - 13in)</option>
+                        <option value='9'>#9 Boot (9in - 19in)</option>
+                    </select>
+                </div>
+                <div class="bootDiv">
+                    <label>Color:</label>
+                    <select id='bootColorSelector' class='colorSelect'></select>
+                </div>
+                <div class="bootDiv">
+                    <div class='labeledCheckbox'>
+                        <label for='hiTemp'>Hi-temp</label>
+                        <input type="checkbox" onchange='handleHiTempChange(this)' id="hiTemp" name="hiTemp">
+                    </div>
+                    <div class='labeledCheckbox'>
+                        <label for='isSplit'>Split</label>
+                        <input type='checkbox' onchange='handleSplitBootChange(this)' id='isSplit' name='isSplit'>
+                    </div>
+                </div>
+                <div class="bootDiv">
+                    <label>Quantity</label>
+                    <input type='number' id='bootQuant' value=1 max='99' min='1' onclick='selectInputData(this)'>
+                    <button class="bootButton" onclick="addBootButton()">Add Boots</button>
+                </div>
+            </div>
+            <div id='ice' class='tabContent extrasTabContent'>
+                <div class='iwDiv'>
+                    <label for="iwDrip">at Drip Edge</label>
+                    <input type="checkbox" id='iwDrip' name="iwDrip">
+                </div>
+                <div class='iwDiv'>
+                    <label for="iwValleys">at Valleys</label>
+                    <input type="checkbox" id="iwValleys" name="iwValleys">
+                </div>
+                <div class="iwDiv">
+                    <label for='iwSidewall'>at Sidewall</label>
+                    <input type="checkbox" id='iwSidewall' name="iwSidewall">
+                </div>
+                <div class='iwDiv'>
+                    <label for="iwRake">at Rake</label>
+                    <input type="checkbox" id="iwRake" name="iwRake">
+                </div>
+                <div class='iwDiv'>
+                    <label for='iwHips'>at Hips</label>
+                    <input type="checkbox" id='iwHips' name='iwHips'>
+                </div>
+            </div>
+            <div id='soffit' class='tabContent extrasTabContent'>
+                <div class='border-right'>
+                    <h3>Fascia</h3>
+                    <div class='fasciaFlex' >
+                        <div class='fasicaDiv'>
+                            <label>Color: </label>
+                            <select id='fasciaColorSelect'></select>
+                        </div>
+                        <div class='fasicaDiv'>
+                            <label>Fascia Height</label>
+                            <select id='fasciaHeightSelect'>
+                                <option value=0>-</option>
+                                <option value=4>4"</option>
+                                <option value=6>6"</option>
+                                <option value=8>8"</option>
+                                <option value=12>12"</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for='fasciaDrip'>at Drip Edge</label>
+                            <input type='checkbox' id='fasciaDrip'><br>
+                            <label for='fasicaRake'>at Rake Edge</label>
+                            <input type="checkbox" id='fasciaRake'>
+                        </div>
+                    </div>
+                </div>
+                <div class='border-left'>
+                    <h3>Soffit</h3>
+                    <div class='soffitFlex'>
+                        <div>
+                            <label>Color:</label>
+                            <select id='soffitColorSelect' class='colorSelect'>
+                            </select>
+                        </div>
+                        <div>
+                            <span title='Length from wall/siding to fascia/edge of roof'>
+                                <Label>Length: </Label>
+                                <input type="number" id='soffitLength' min='4', max='48', value=12 width=45px onclick='selectInputData(this)'>
+                                <Label>inches</Label>
+                            </span>
+                        </div>
+                        <div>
+                            <label><input type="checkbox" id='soffitVented'>Vented</label>
+                        </div>
+                        <div>
+                            <label for='soffitDrip'>at Drip Edge</label>
+                            <input type='checkbox' id='soffitDrip'><br>
+                            <label for='soffitRake'>at Rake Edge</label>
+                            <input type="checkbox" id='soffitRake'>
+                        </div>
+                    </div>                    
+                </div>    
+            </div>
+        </article>
+
+        <article class="buttonBox" id="buttonBox">
+            <button class="buttons" id="calculateButton" onclick="calculate()">Calculate Estimated Materials</button>
+            <button class="buttons" id="reset" onClick="resetMeasures()">Reset All Measurements</button>
+        </article>
+        <h3 class="warning" id="trim-warning"></h3>
+    </section>
+
+    <section class="materials-box">
+        <h2>Panels</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th class="quantityList">Quantity</th>
+                    <th class="nameColumn">Item</th>
+                    <th class="priceColumn">Price</th>
+                    <th class="totalColumn">Total Price</th>
+                </tr>
+            </thead>
+            <tbody class="mats-table" id="panel-table"></tbody>
+        </table>
+        <div class = 'panelLabelsFlex'>
+            <div>
+                <label id="panelScrewsLabel"></label>
+            </div>
+            <div>
+                <label id='panelWeightLabel'></label>    
+            </div>
+            <div>
+                <label id='panelSqLabel'></label>
+            </div>
+            <div>
+                <button onclick="resetPanels()">Reset Panels</button>
+            </div>
+            <div>
+                <button onclick="sortPanelTable()">Sort Panels</button>
+            </div>
+        </div>
+        <div id="panel-total"></div>
+        <h2>Trims</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th class="quantityList">Quantity</th>
+                    <th class="nameColumn">Item</th>
+                    <th class="priceColumn">Price</th>
+                    <th class="totalColumn">Total Price</th>
+                </tr>
+            </thead>
+            <tbody class="mats-table" id="trim-table"></tbody>
+        </table>
+        <div class="trimLabelsFlex">
+            <div>
+                <label id='trimWeightLabel'></label>
+            </div>
+            <div>
+                <h3 class="priceHeader" id="trim-total"></h3>
+            </div>
+        </div>
+        <h2>Accessories</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th class="quantityList">Quantity</th>
+                    <th class="nameColumn">Item</th>
+                    <th class="priceColumn">Price</th>
+                    <th class="totalColumn">Total Price</th>
+                </tr>
+            </thead>
+            <tbody class="mats-table" id="accessories-table"></tbody>
+        </table>
+        <h3 class="priceHeader" id="accessories-total"></h3>
+        <br><br>
+        <div id="receipt-total"></div>
+    </section>
+
+
+
+    <script src="main.js"></script>
+</body>
+</html>

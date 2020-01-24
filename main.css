@@ -1,0 +1,398 @@
+body{
+    width:90%;
+    min-width: 320px;
+    min-height: 800px;
+    color: #fefefe;
+    margin: auto;
+    max-width: 940px;
+}
+
+header{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    backGround: #333;
+}
+
+section{
+    padding: 10px;
+}
+
+article{
+    padding: 5px;
+}
+
+h1{
+    margin: 0;
+}
+
+.panel-div{
+    background: #555;
+    text-align: center;
+}
+
+#panel-type-div{
+    width: 80%;
+    margin: auto;
+}
+
+.panel-div-flex{
+    display: flex;
+    flex-wrap: wrap;
+    width:80%;
+    padding: 5px;
+}
+
+.panel-div-flex div{
+    min-width: 200px;
+}
+
+.panel-div h2{
+    flex:2;
+    color: #222;
+}
+
+.numberInputLabel{
+    padding-right: 20px;
+}
+
+.panel-div input[type="number"]{
+    width: 35px;
+}
+
+#panel-quant{
+    width: 45px;
+}
+
+.warning{
+    color: #fa3a3a;
+    text-align: center;
+    padding: 5px;
+    margin:0;
+    margin:auto;
+}
+
+#measurements{
+    background: #555555;
+}
+
+#planeFlex{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+#planeFlex div{
+    min-width: 170px;
+}
+
+#planeFlex h4{
+    color:#fefefe;
+    margin: 10px;
+}
+
+.padTen{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.colorBoxes{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 8px;
+    text-align: center;
+    min-width: 240px;
+    background-color: #333;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.colorBoxes section{
+    flex:1;
+    min-width: 240px;
+    padding: 3px;
+}
+
+.colorBoxes label{
+    text-align: right;
+}
+
+.colorSelect{
+    width: 120px;
+}
+
+.labeledCheckbox label{
+    text-align: right;
+    padding-right : 5px;
+}
+
+.checkBoxes{
+    display:flex;
+    min-width: 200px;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.checkBoxes div{
+    flex:1;
+    min-width: 135px;
+    padding: 3px;
+}
+
+.ft-inputs{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: right;
+}
+
+.ft-inputs input[type=number]{
+    width: 50px;
+}
+
+.ft-inputs div{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 400px;
+    flex:1;
+    margin:auto;
+}
+
+.ft-inputs div div{
+    flex:1;
+    min-width: 210px;
+    padding: 3px;
+    justify-content: flex-end;
+    margin-right: 25%;
+}
+
+.tabButtonBox{
+    display:flex;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.bootButton{
+    margin: 0;
+}
+
+#panel-type-div h3, #panel-type-div h4{
+    color: #fff;
+}
+
+.tabButton{
+    color: #FFF;
+    text-align: center;
+    width: 100%;
+    font-size: 16px;
+    height: 40px;
+    border: none;
+    background-color: #777;
+    border-right: #555 solid;
+    border-left: #555 solid;
+}
+
+.active, .tabButton:hover{
+    background-color: #333;
+}
+
+.tabContent{
+    margin: auto;
+    flex-wrap: wrap;
+    display: none;
+    padding: 10px;
+    margin: 0px 3px;
+    background-color: #333;
+}
+
+#addPanels{
+    display: block;
+}
+
+/* .panel-div div{
+    flex:1;
+    min-width: 218px;
+    margin: auto;
+} */
+
+.tabContent h3{
+    color:#ddd;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tabContent div{
+    flex: 1;
+    text-align: center;
+    margin: auto;
+    padding: 3px;
+}
+
+.bootDiv{
+    margin: auto;
+    padding: 3px;
+    min-width: 205px;
+    flex: 1;
+}
+
+#bootSizeDiv{
+    flex: 2;
+}
+
+#bootSizeSelector{
+    width: 168px;
+}
+
+.iwDiv{
+    min-width: 135px;
+}
+
+.tabContent div input[type='checkbox']{
+    text-align: left;
+}
+
+.tabContent div input[type='number']{
+    margin: 0;
+    width: 40px;
+}
+
+#bootColorSelector{
+    width: 95px;
+}
+
+.fasciaFlex{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.fasciaFlex div{
+    min-width: 128px;
+    margin: auto;
+}
+
+.soffitFlex{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.border-left{
+    border-left: 3px solid #777;
+}
+
+.border-right{
+    border-right: 3px solid #777;
+}
+
+.soffitFlex div{
+    min-width: 128px;
+    margin: auto;
+}
+
+.buttonBox{
+    text-align: center;
+}
+
+.buttons{
+    width: 200px;
+    margin-left:15px;
+    margin-right: 15px;
+    margin-top: 5px;
+}
+
+.panelLabelsFlex{
+    display:flex;
+    width: 100%;
+    padding: 5px;
+}
+
+.panelLabelsFlex div{
+    flex:1;
+    text-align: center;
+    color: black;
+}
+
+.trimLabelsFlex{
+    display:flex;
+    width: 100%;
+}
+
+.trimLabelsFlex div{
+    flex: 1;
+    color: black;
+    margin-left: 15px;
+}
+
+table, th, td{
+    border-collapse: collapse;
+    color: black;
+    border: 1px solid black;
+}
+
+table{
+    width: 100%;
+}
+
+th{
+    background: #ddd;
+}
+
+tr:nth-child(even){
+    background: #dddddd
+}
+
+.quantityList{
+    text-align: center;
+    overflow: hidden;
+    width: 50px;
+}
+
+.quantityColumn{
+    text-align: right;
+    padding-right: 12px;
+}
+
+.nameColumn{
+    min-width: 150px;
+}
+
+.priceColumn{
+    min-width: 50px;
+    max-width: 100px;
+}
+
+.totalColumn{
+    min-width: 75px;
+    max-width: 140px;
+}
+
+@media screen and (max-width:600px){
+    .priceColumn{
+        display:none;
+    }
+}
+
+h2, h3, h4, h5{
+    color: #222;
+    text-align: center;
+    margin:3px;
+}
+
+.smol{
+    margin:0;
+    font-weight: normal;
+}
+
+.priceHeader{
+    text-align: right;
+    padding-top: 5px;
+    color: #222;
+    align-self: center;
+}
+
+.radioFlex{
+    display:flex;
+    flex-wrap: wrap;
+    max-width: 250px;
+}
+
+.radioFlex div{
+    padding-left: 10px;
+    padding-right: 8px;
+}
